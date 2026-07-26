@@ -1,0 +1,29 @@
+import java.util.*;
+class Solution {
+    public int[] topKFrequent(int[] num, int k) {
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int x: num){
+            map.put(x,map.getOrDefault(x,0)+1);
+        }
+        int max1=0,max2=0;
+        int f1=0,f2=0;
+        for(Map.Entry<Integer,Integer> entry: map.entrySet()){
+            int key=entry.getKey();
+            int freq=entry.getValue();
+            if(freq>f1){
+                f2=f1;
+                max2=max1;
+                f1=freq;
+                max1=key;
+            }
+            else if(freq>f2){
+                f2=freq;
+                max2=key;
+            }
+        }
+        if(k==1){
+            return new int[]{max1};
+        }
+        return new int[]{max1,max2};
+    }
+}
