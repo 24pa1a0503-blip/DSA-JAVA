@@ -1,0 +1,19 @@
+import java.util.*;
+class Solution {
+    public List<String> findDuplicateTransactions(List<String> transactions) {
+           Set<String> seen=new HashSet<>();
+           Set<String> dup=new HashSet<>();
+           int f=0;
+           for(String tr: transactions){
+            if(!seen.add(tr)) {
+                dup.add(tr);
+                f=1;
+            }
+           }
+           List<String> res=new ArrayList<>(dup);
+           if(f==0) res.add("-1");
+           Collections.sort(res);
+           return res;
+    }
+
+}
