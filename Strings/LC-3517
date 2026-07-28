@@ -1,0 +1,15 @@
+class Solution {
+    public String smallestPalindrome(String s) {
+        int n=s.length();
+        int mid=n/2;
+        char[] half=s.substring(0,mid).toCharArray();
+        Arrays.sort(half);
+        String fh=new String(half);
+        StringBuilder sh=new StringBuilder(fh).reverse();
+        if(n%2==0) return fh+sh.toString();
+        else{
+            char middle=s.charAt(mid);
+            return fh+middle+sh.toString();
+        }
+    }
+}
