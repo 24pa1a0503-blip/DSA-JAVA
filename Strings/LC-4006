@@ -1,0 +1,16 @@
+class Solution {
+    public int countValidPrefixes(String s) {
+        int n=s.length();
+        int c0=0;
+        int c1=0;
+        int c=0;
+        for(int i=0;i<n;i++){
+            int ch=s.charAt(i);
+            if(ch=='0') c0++;
+            else c1++;
+            int val=c0-c1;
+            if(Math.abs(val)<=1) c++;
+        }
+        return c;
+    }
+}
