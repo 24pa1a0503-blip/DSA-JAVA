@@ -1,0 +1,12 @@
+class Solution {
+    public boolean canAliceWin(int[] nums) {
+        int sin=0;
+        int dou=0;
+        for(int x: nums){
+            if(x/10==0) sin+=x;
+            else dou+=x;
+        }
+        if(sin==dou) return false;
+        else return true;
+    }
+}
