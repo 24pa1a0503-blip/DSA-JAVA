@@ -1,0 +1,30 @@
+class Solution {
+    public int maximumWidth(int[] planks) {
+        Map<Long,Integer> map=new HashMap<>();
+        for(int x : planks){
+            map.put((long)x,map.getOrDefault((long)x,0)+1);
+        }
+        List<Long> val=new ArrayList<>(map.keySet());
+        Map<Long,Long> pair=new HashMap<>();
+        int m=val.size();
+        for(int i=0;i<m;i++){
+            for(int j=i;j<m;j++){
+                long a=val.get(i);
+                long b=val.get(j);
+                long s=a+b;
+                if(i==j) pair.put(s,pair.getOrDefault(s,0L)+map.get(a)/2);
+                else pair.put(s,pair.getOrDefault(s,0L)+Math.min(map.get(a),map.get(b)));
+            }
+        }
+        long ans=0;
+        for(Map.Entry<Long,Long> entry : pair.entrySet()){
+            long h=entry.getKey();
+            long c=entry.getValue();
+            ans=Math.max(ans,c+map.getOrDefault(h,0));
+        }
+        for(long cn : map.values()){
+            ans=Math.max(ans,cn);
+        }
+        return (int) ans;
+    }
+}
