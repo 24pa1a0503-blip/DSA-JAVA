@@ -1,0 +1,20 @@
+class Solution {
+    public List<Integer> findMissingElements(int[] nums) {
+        List<Integer> ans=new ArrayList<>();
+        int n=nums.length;
+        int min=Integer.MAX_VALUE;
+        int max=Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            if(nums[i]<min) min=nums[i];
+            if(nums[i]>max) max=nums[i];
+        }
+        boolean[] con=new boolean[max-min+1];
+        for(int i=0;i<n;i++){
+            con[nums[i]-min]=true;
+        }
+        for(int i=0;i<con.length;i++){
+            if(con[i]==false) ans.add(min+i);
+        }
+        return ans;
+    }
+}
