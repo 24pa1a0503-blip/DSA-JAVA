@@ -1,0 +1,19 @@
+class Solution {
+    public int maxScore(int[] cardPoints, int k) {
+        int n=cardPoints.length;
+        int t=0;
+        for(int x: cardPoints) t+=x;
+        if(k==n) return t;
+        int ws=n-k;
+        int cs=0;
+        for(int i=0;i<ws;i++){
+            cs+=cardPoints[i];
+        }
+        int mins=cs;
+        for(int i=ws;i<n;i++){
+            cs+=cardPoints[i]-cardPoints[i-ws];
+            mins=Math.min(mins,cs);
+        }
+        return t-mins;
+    }
+}
