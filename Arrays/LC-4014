@@ -1,0 +1,43 @@
+class Solution {
+    public double minPrice(int[] prices, int[] discounts) {
+        int n1=prices.length;
+        int n2=discounts.length;
+        int[] parr;
+        int[] darr;
+        if(n1>n2){
+            parr=new int[n1];
+            for(int i=0;i<n1;i++){
+                parr[i]=prices[i];
+            }
+            darr=new int[n1];
+            for(int j=0;j<n2;j++){
+                darr[j]=discounts[j];
+            }
+        }
+        else if(n1<n2){
+            parr=new int[n2];
+            for(int i=0;i<n1;i++){
+                parr[i]=prices[i];
+            }
+            darr=new int[n2];
+            for(int j=0;j<n2;j++){
+                darr[j]=discounts[j];
+            }
+        }
+        else{
+            parr=new int[n1];
+            darr=new int[n2];
+            for(int i=0;i<n1;i++){
+                parr[i]=prices[i];
+                darr[i]=discounts[i];
+            }
+        }
+        Arrays.sort(parr);
+        Arrays.sort(darr);
+        double s=0;
+        for(int i=0;i<parr.length;i++){
+            s+=(parr[i]*(100.0-darr[i]))/100.0;
+        }
+        return s;
+    }
+}
