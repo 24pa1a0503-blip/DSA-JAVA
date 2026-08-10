@@ -1,0 +1,19 @@
+class Solution {
+    private static Boolean[] dp;
+    public boolean winnerSquareGame(int n) {
+        dp=new Boolean[n+1];
+        return help(n);
+    }
+    static boolean help(int n){
+        if(n<=0) return false;
+        if(dp[n]!=null) return dp[n];
+        for(int j=1;j*j<=n;j++){
+            if(!help(n-j*j)){
+                dp[n]=true;
+                return true;
+            }
+        }
+        dp[n]=false;
+        return false;
+    }
+}
