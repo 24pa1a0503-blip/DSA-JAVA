@@ -1,0 +1,16 @@
+class Solution {
+    static int sum(int n){
+        int s=0,pr=1;
+        while(n!=0){
+            int d=n%10;
+            s+=d;
+            pr*=d;
+            n=n/10;
+        }
+        return s+pr;
+    }
+    public boolean checkDivisibility(int n) {
+        int val=sum(n);
+        return n%val==0;
+    }
+}
