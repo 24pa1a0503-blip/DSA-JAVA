@@ -1,0 +1,17 @@
+class Solution {
+    public List<List<Integer>> findDisappearedNumbers(int[] nums, int lower, int upper) {
+        List<List<Integer>> r=new ArrayList<>();
+        Arrays.sort(nums);
+        int c=lower;
+        for(int n : nums){
+            if(n<c) continue;
+            if(n>upper) break;
+            if(n>c) r.add(Arrays.asList(c,n-1));
+            c=n+1;
+        }
+        if(c<=upper){
+            r.add(Arrays.asList(c,upper));
+        }
+        return r;
+    }
+}
