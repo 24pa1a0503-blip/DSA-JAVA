@@ -1,0 +1,18 @@
+class Solution {
+    static boolean help(int n,int r){
+        if(n%r==0) return true;
+        else return false;
+    }
+    public int countDigits(int num) {
+        int c=0;
+        int or=num;
+        while(num!=0){
+            int r=num%10;
+            if(help(or,r)){
+                c++;
+            }
+            num=num/10;
+        }
+        return c;
+    }
+}
