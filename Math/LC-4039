@@ -1,0 +1,28 @@
+class Solution {
+    public int sumDecoded(long[] nums) {
+        long sum=0;
+        long mod=(long)1e9+7;
+        for(long x: nums){
+            long w=x%10;
+            long d=x/10;
+            String dstr=String.valueOf(d);
+            String xstr=dstr.substring(0,(int)w);
+            String ystr=dstr.substring((int)w);
+            long xi=Long.parseLong(xstr);
+            long yi=Long.parseLong(ystr);
+            long val=power(xi,yi,mod);
+            sum=(sum+val)%mod;
+        }
+        return (int)sum;
+    }
+    static long power(long b,long e,long m){
+        long r=1;
+        b=b%m;
+        while(e>0){
+            if(e%2==1) r=(r*b)%m;
+            b=(b*b)%m;
+            e/=2;
+        }
+        return r;
+    }
+}
