@@ -1,0 +1,17 @@
+class Solution {
+    public int mostFrequentEven(int[] nums) {
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int ans=-1;
+        int max=0;
+        for(int x: nums){
+            if(x%2!=0) continue;
+            int c=map.getOrDefault(x,0)+1;
+            map.put(x,c);
+            if(c>max|| (c==max && x<ans)){
+                max=c;
+                ans=x;
+            }
+        }
+        return ans;
+    }
+}
