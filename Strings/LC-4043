@@ -1,0 +1,20 @@
+class Solution {
+    public int countRotations(String s, int k) {
+        int n=s.length();
+        if(n==0) return 0;
+        int tm=0;
+        for(int i=0;i<n;i++){
+            if(s.charAt(i)==s.charAt((i+1)%n)) tm++;
+        }
+        int ans=0;
+        for(int j=0;j<n;j++){
+            int prev=(j-1+n)%n;
+            int exc=(s.charAt(prev)==s.charAt(j)?1:0);
+            int cs=tm-exc;
+            if(cs==k){
+                ans++;
+            }
+        }
+        return ans;
+    }
+}
