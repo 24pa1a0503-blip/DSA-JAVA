@@ -1,0 +1,11 @@
+class Solution {
+    public int pivotInteger(int n) {
+        int ts=(n*(n+1))/2;
+        for(int i=1;i<=n;i++){
+            int ls=(i*(i+1))/2;
+            int rs=ts-ls+i;
+            if(ls==rs) return i;
+        }
+        return -1;
+    }
+}
