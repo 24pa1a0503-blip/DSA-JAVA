@@ -1,0 +1,36 @@
+class Solution {
+    private static final List<Long> even=new ArrayList<>();
+    private static final List<Long> odd=new ArrayList<>();
+    private static boolean isin=false;
+    private static void initialize() {
+        if(isin) return;
+        for(int i=1;i<=100000;i++){
+            String s=Integer.toString(i);
+            String rev= new StringBuilder(s).reverse().toString();
+            long p1=Long.parseLong(s+rev.substring(1));
+            if(p1%2==0) even.add(p1);
+            else odd.add(p1);
+            long p2=Long.parseLong(s+rev);
+            if(p2%2==0) even.add(p2);
+           else odd.add(p2);
+        }
+        Collections.sort(even);
+        Collections.sort(odd);
+        isin=true;
+    }
+    public long minOperations(int[] nums){
+        initialize();
+        long t=0;
+        for(int num : nums){
+            List<Long> tl=(num%2==0)? even: odd;
+            int idx=Collections.binarySearch(tl,(long)num);
+            if(idx>=0) continue;
+            int inidx= -(idx+1);
+            long mindif =Long.MAX_VALUE;
+            if(inidx<tl.size()) mindif=Math.min(mindif,tl.get(inidx)-num);
+            if(inidx>0) mindif=Math.min(mindif,num-tl.get(inidx-1));
+            t+=mindif/2;
+        }
+        return t;
+    }
+}
