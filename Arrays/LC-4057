@@ -1,0 +1,27 @@
+class Solution {
+    static int help(int[] ends,int t){
+        int l=0;
+        int h=ends.length;
+        while(l<h){
+            int mid=l+(h-l)/2;
+            if(ends[mid]<t) l=mid+1;
+            else h=mid;
+        }
+        return l;
+    }
+    public long countIntersectingIntervals(int[][] intervals) {
+        long n=intervals.length;
+        long tot=n*(n-1)/2;
+        int[] ends=new int[(int)n];
+        for(int i=0;i<n;i++){
+            ends[i]=intervals[i][1];
+        }
+        Arrays.sort(ends);
+        long non=0;
+        for(int i=0;i<n;i++){
+            int st=intervals[i][0];
+            non+=help(ends,st);
+        }
+        return tot-non;
+    }
+}
