@@ -1,0 +1,15 @@
+class Solution {
+    public int reverseDegree(String s) {
+        int n=s.length();
+        int sum=0;
+        int pr=1;
+        for(int i=0;i<n;i++){
+            char ch=s.charAt(i);
+            int v=97-(int)ch;
+            int val=v+26;
+            sum=sum+pr*val;
+            pr++;
+        }
+        return sum;
+    }
+}
