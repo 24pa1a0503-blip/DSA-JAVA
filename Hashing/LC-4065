@@ -1,0 +1,21 @@
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        int n=nums.length;
+        int[] ans=new int[n];
+        int pos=0;
+        TreeMap<Integer,Integer> map=new TreeMap<>();
+        for(int x: nums){
+            map.put(x,map.getOrDefault(x,0)+1);
+        }
+        while(!map.isEmpty()){
+            List<Integer> lst=new ArrayList<>();
+            for(int key : map.keySet()){
+                ans[pos++]=key;
+                map.put(key,map.get(key)-1);
+                if(map.get(key)==0) lst.add(key);
+            }
+            for(int p : lst) map.remove(p);
+        }
+        return ans;
+    }
+}
