@@ -1,0 +1,21 @@
+class Solution {
+    public long maxAlternatingSum(int[] nums) {
+        long e0=Long.MIN_VALUE/2;
+        long o0=Long.MIN_VALUE/2;
+        long e1=Long.MIN_VALUE/2;
+        long o1=Long.MIN_VALUE/2;
+        long max=Long.MIN_VALUE;
+        for(int  num: nums){
+            long ne0=Math.max((long)num,o0+num);
+            long no0=e0-num;
+            long ne1=Math.max(o1+num,e0);
+            long no1=Math.max(e1-num,o0);
+            e0=ne0;
+            o0=no0;
+            e1=ne1;
+            o1=no1;
+            max=Math.max(max,Math.max(Math.max(e0,o0),Math.max(e1,o1)));
+        }
+        return max;
+    }
+}
