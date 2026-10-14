@@ -1,0 +1,8 @@
+class Solution {
+    public String maxSumOfSquares(int num, int sum) {
+        if(sum>9*num) return "";
+        int n=sum/9;
+        int rem=sum%9;
+        return ("9".repeat(n)+rem+"0".repeat(num)).substring(0,num);
+    }
+}
