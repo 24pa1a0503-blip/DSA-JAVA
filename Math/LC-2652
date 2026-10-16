@@ -1,0 +1,13 @@
+class Solution {
+    static boolean help(int n){
+        if(n%3==0||n%5==0||n%7==0) return true;
+        else return false;
+    }
+    public int sumOfMultiples(int n) {
+        int s=0;
+        for(int i=1;i<=n;i++){
+            if(help(i)) s+=i;
+        }
+        return s;
+    }
+}
