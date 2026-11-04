@@ -1,0 +1,13 @@
+class Solution {
+    public List<Integer> toggleLightBulbs(List<Integer> bulbs) {
+        List<Integer> lst=new ArrayList<>();
+        int n=bulbs.size();
+        for(int i=0;i<n;i++){
+            int val=bulbs.get(i);
+            if(lst.contains(val)) lst.remove(Integer.valueOf(val));
+            else lst.add(val); 
+        }
+        Collections.sort(lst);
+        return lst;
+    }
+}
