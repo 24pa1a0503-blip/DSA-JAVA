@@ -1,0 +1,37 @@
+class Solution {
+    public int diagonalSum(int[][] mat) {
+        int n=mat.length;
+        int ps=0,ss=0;
+        if(n%2!=0){
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    if(i==j) ps+=mat[i][j];
+                }
+            }
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    if(j==n-i-1){
+                        if(i==j) continue;
+                        else ss+=mat[i][j];
+                    }
+                }
+            }
+            return ps+ss;
+        }
+        else{
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    if(i==j) ps+=mat[i][j];
+                }
+            }
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    if(j==n-i-1){
+                        ss+=mat[i][j];
+                    }
+                }
+            }
+            return ps+ss;
+        }
+    }
+}
