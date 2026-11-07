@@ -1,0 +1,14 @@
+class Solution {
+    public int sumOfUnique(int[] nums) {
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int s=0;
+        for(int x: nums) map.put(x,map.getOrDefault(x,0)+1);
+        for(Map.Entry<Integer,Integer> en : map.entrySet()){
+            int key=en.getKey();
+            int val=en.getValue();
+            if(val>1) continue;
+            else s+=key;
+        }
+        return s;
+    }
+}
