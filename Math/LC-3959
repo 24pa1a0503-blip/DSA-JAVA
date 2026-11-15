@@ -1,0 +1,25 @@
+class Solution {
+    static int ds(int n){
+        int s=0;
+        while(n!=0){
+            s+=n%10;
+            n=n/10;
+        }
+        return s;
+    }
+    static int sos(int n){
+        int s=0;
+        while(n!=0){
+            int r=n%10;
+            s+=r*r;
+            n=n/10;
+        }
+        return s;
+    }
+    public boolean checkGoodInteger(int n) {
+        int s1=ds(n);
+        int s2=sos(n);
+        if(s2-s1>=50) return true;
+        else return false;
+    }
+}
