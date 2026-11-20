@@ -1,0 +1,17 @@
+class Solution {
+    static String help(String s){
+        int n=s.length();
+        StringBuilder ans=new StringBuilder();
+        for(int i=0;i<n-1;i++){
+            int v1=s.charAt(i)-'0';
+            int v2=s.charAt(i+1)-'0';
+            int val=(v1+v2)%10;
+            ans.append(val);
+        }
+        return ans.toString();
+    }
+    public boolean hasSameDigits(String s) {
+        while(s.length()>2) s=help(s);
+        return s.charAt(0)==s.charAt(1);
+    }
+}
