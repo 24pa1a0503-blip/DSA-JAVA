@@ -1,0 +1,19 @@
+class Solution {
+    static int help(char ch){
+        return ch-'a';
+    }
+    public String mapWordWeights(String[] words, int[] weights) {
+        String res="";
+        for(int i=0;i<words.length;i++){
+            int s=0;
+            String w=words[i];
+            for(int j=0;j<w.length();j++){
+                char ch=w.charAt(j);
+                s+=weights[help(ch)];
+            }
+            int m=s%26;
+            res+=(char)('z'-m);
+        }
+        return res;
+    }
+}
